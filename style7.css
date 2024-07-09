@@ -1,0 +1,89 @@
+.vision-mision_valores {
+    display: flex;
+    justify-content: space-around; /* Distribuye los elementos equitativamente */
+    align-items: flex-start; /* Alinea los elementos en la parte superior */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en varias líneas si es necesario */
+}
+
+.elemento {
+    width: 30%; /* Ancho del elemento ajustable según sea necesario */
+    text-align: center; /* Centra el contenido */
+    margin-bottom: 20px; /* Espacio entre cada elemento */
+}
+
+.imagen-elemento {
+    width: 120px; /* Tamaño del contenedor del círculo */
+    height: 120px;
+    border: 5px solid #00BFFF; /* Borde celeste */
+    border-radius: 50%; /* Para hacerlo circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 10px; /* Ajusta el margen para centrar verticalmente */
+    overflow: hidden; /* Para asegurar que la imagen no se desborde */
+}
+
+.icono-imagen {
+    width: 70px; /* Tamaño de las imágenes de los iconos */
+    height: 70px;
+    object-fit: cover; /* Ajusta la imagen dentro del contenedor */
+}
+
+.texto {
+    border-radius: 20px;
+    background: #00BFFF;
+    padding: 10px;
+}
+
+.texto h1 {
+    font-size: 1.5em; /* Tamaño del título */
+    margin-bottom: 5px; /* Espacio bajo el título */
+}
+
+.texto p {
+    font-size: 1em; /* Tamaño del párrafo */
+}
+
+
+
+.circle-container {
+    display: flex;   
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.element {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.element1, .element2, .element3, .element4 {
+    text-align: center;
+    margin: 10px;
+}
+
+.element img {
+    width: 100px;
+    height: 100px;
+}
+.circle-container img {
+    display: block;
+    margin: 0 auto;
+}
+.elemento_principal img{
+    width: 200px;
+    height: 200px; 
+}
+.elemento_principal{
+    background: rgb(0, 204, 255);
+    border-radius: 50%;
+}
+
+
+.lema {
+    max-width: 100%; /* Asegura que la imagen no supere el ancho del contenedor padre */
+    height: auto; /* Permite que la altura se ajuste automáticamente según el ancho */
+    display: block; /* Elimina el espacio adicional debajo de la imagen */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+  }
+  

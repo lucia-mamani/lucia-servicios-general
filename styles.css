@@ -1,0 +1,774 @@
+body{
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    padding-top: 110px;
+}
+/* CSS *//*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --black-color: hsl(220, 24%, 12%);
+  --black-color-light: hsl(220, 24%, 15%);
+  --black-color-lighten: hsl(220, 20%, 18%);
+  --white-color: #fff; 
+  --body-color: hsl(220, 100%, 97%);
+  --blue-medium: #4682B4; /* Color azul medio */
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Montserrat", sans-serif;
+  --normal-font-size: .938rem;
+
+  /*========== Font weight ==========*/
+  --font-regular: 400;
+  --font-semi-bold: 600;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1024px) {
+  :root {
+    --normal-font-size: 1rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+}
+
+ul {
+  list-style: none;
+  /* Color highlighting when pressed on mobile devices */
+  /*-webkit-tap-highlight-color: transparent;*/
+}
+
+a {
+  text-decoration: none;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+
+/*=============== HEADER ===============*/
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background: linear-gradient(to right, #008cff, #0059ff, #4f30ff, #2600ff);
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000; /* Z-index elevado para estar por encima del contenido */
+}
+
+.logo {
+  margin-left: 60px;
+  width: 200px;
+  height: 90px;
+}
+
+.menu-icon {
+  cursor: pointer;
+  padding: 10px;
+  display: none; /* Oculta el icono de hamburguesa en pantallas grandes */
+}
+
+.menu-icon span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 5px 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+#menu-toggle:checked + .menu-icon span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+#menu-toggle:checked + .menu-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+#menu-toggle:checked + .menu-icon span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+}
+
+.menu ul li {
+  position: relative;
+  line-height: 3rem;
+}
+
+.menu ul li a {
+  font-size: 18px; /* Reducir el tamaño de fuente para dispositivos más pequeños */
+  font-weight: 900;
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 0 1em; /* Reducir el espaciado entre enlaces para dispositivos más pequeños */
+  transition: background 0.4s;
+}
+
+.menu ul li a:hover {
+    background-color: #007bff;
+}
+
+.menu ul ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgb(0, 247, 255);
+  padding: 0;
+  width: 200px;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s;
+}
+
+.menu ul li:hover > ul {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu ul ul li {
+  line-height: 2rem;
+}
+
+.menu ul ul ul {
+  left: 100%;
+  top: 0;
+  margin-left: 1px;
+}
+
+.red_social {
+  display: flex;
+  justify-content: flex-end;
+  padding-left: 10px;
+  padding-right: 50px;
+}
+
+.redes_sociales {
+  width: 40px;
+  height: 30px;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    width: 100px;
+    height: 50px;
+    margin: 1px;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .menu {
+    position: fixed;
+    top: var(--header-height);
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #333;
+    z-index: 999;
+    max-height: 0;
+    overflow-y: auto;
+    transition: max-height 0.4s ease-out; /* Transición suave para mostrar/ocultar el menú */
+  }
+
+  #menu-toggle:checked + .menu-icon + .menu {
+    max-height: 100vh;
+  }
+
+  .menu ul {
+    flex-direction: column; /* Cambia la dirección de los elementos a columna */
+    padding: 1em; /* Añade espaciado alrededor de los elementos */
+  }
+
+  .menu ul li {
+    line-height: 2rem; /* Ajusta la altura de línea para dispositivos pequeños */
+  }
+
+  .menu ul li a {
+    padding: 0.5em 1em; /* Ajusta el espaciado entre enlaces */
+  }
+
+  .menu ul ul {
+    position: static; /* Cambia la posición del submenú a estática */
+    background-color: transparent; /* Hace que el fondo del submenú sea transparente */
+    max-height: 0; /* Inicialmente oculto */
+    overflow: hidden;
+    transition: max-height 0.4s ease-out; /* Transición suave para mostrar/ocultar el submenú */
+  }
+
+  .menu ul ul.open {
+    max-height: 500px; /* Altura máxima para mostrar el submenú desplegable */
+  }
+}
+
+
+
+P{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 18px;
+}
+
+h1{
+    text-align: center;
+    font-size:48px ;
+}
+
+.imagen-portada {
+    width: 100%;
+    max-width: 1349px;
+    height: auto;
+    max-height: 580px;
+}   .carousel {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.carousel-track-container {
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+}
+
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.carousel-item img {
+    width: 100%;
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .carousel-item {
+        min-width: 50%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .carousel-item {
+        min-width: 33.33%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .carousel-item {
+        min-width: 25%;
+    }
+}
+
+@media (min-width: 1400px) {
+    .carousel-item {
+        min-width: 20%;
+    }
+}
+
+.introducion {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    display: flex;
+    justify-content: space-between; /* Espaciado entre elementos */
+    align-items: center; /* Centrar verticalmente los elementos */
+    text-align: center;
+}
+
+.introducion .imagen-1 {
+    flex: 1; /* Ocupar todo el espacio restante */
+    margin-right: 2rem; /* Espacio entre el texto y la imagen en pantallas más grandes */
+}
+
+.introducion .informacion-1 {
+    flex: 1; /* Ocupar todo el espacio restante */
+    margin-left: 2rem; /* Espacio entre el texto y la imagen en pantallas más grandes */
+}
+
+@media (max-width: 768px) {
+    .titulo {
+        font-size: 3rem; /* Reducir el tamaño del título para dispositivos móviles */
+    }
+
+    .producto-destacados {
+        height: auto; /* Ajustar la altura automáticamente */
+    }
+
+    .producto-destacados .lista-imagenes {
+        flex-wrap: wrap; /* Permitir que los elementos se envuelvan en filas en dispositivos pequeños */
+    }
+
+    .elemento-imagen {
+        width: 45%; /* Ajustar el ancho de cada elemento en dispositivos móviles */
+        margin-bottom: 1rem; /* Añadir espacio entre elementos */
+    }
+
+    .elemento-imagen img {
+        max-width: 100%; /* Ajustar el ancho máximo de las imágenes */
+    }
+
+    .introducion {
+        flex-direction: column; /* Cambiar a disposición de columna en dispositivos móviles */
+        align-items: center; /* Alinear al centro */
+        text-align: center; /* Alinear el texto al centro */
+    }
+
+    .introducion .imagen-1,
+    .introducion .informacion-1 {
+        margin: 0; /* Eliminar el margen entre elementos en dispositivos móviles */
+        flex: unset; /* Restablecer la flexibilidad para ajustar automáticamente */
+        width: 100%; /* Asegurar que los elementos ocupen todo el ancho disponible */
+    }
+}
+
+
+.imagen-1 {
+    padding: 10px; /* Espacio interior del borde */
+    
+}
+
+.imagen-1 img {
+    margin-left: 80px;
+    width: 550px; /* Ajustar imagen al contenedor */
+    height: 350px; /* Mantener proporción */
+    display: block; /* Eliminar espacio en línea inferior */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+.informacion-1 {
+    margin-top: -30px;
+    padding-left: 20px; /* Espacio entre imagen y texto */
+    margin-right: 100PX;
+}
+
+.informacion-1 h1 {
+    color: rgb(0, 0, 0); /* Color del texto */
+}
+
+.informacion-1 p {
+    color: rgb(0, 0, 0); /* Color del texto */
+}
+
+.producto-destacados ul{
+    display: flex;
+}
+.lista-imagenes {
+    display: flex;
+    gap: 70px; /* Margen entre imágenes */
+}
+.elemento-imagen {
+    text-align: center;
+}
+.elemento-imagen img {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+}
+
+/* Estilos generales */
+.portada-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #1100ff, #1200b4, rgb(0, 0, 0));
+    width: 100%;
+    max-width: 1349px;
+    height: 350px;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.portada-2::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 10px;
+}
+
+/* Estilos de la sección de publicidad */
+.publicidad {
+    flex: 1;
+    max-width: 400px;
+    text-align: center;
+    padding: 20px;
+    z-index: 1;
+}
+
+.publicidad p {
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 36px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+/* Estilos de la sección de confección textil y soldadura */
+.publicidad-2 {
+    flex: 1;
+    max-width: 400px;
+    text-align: center;
+    padding: 20px;
+    z-index: 1;
+}
+
+.publicidad-2 p {
+    font-weight: 700;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+/* Estilos de la sección de imágenes */
+.imagen-publicidad {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.imagen-publicidad img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Estilos del botón "Conocer Más" */
+.publicidad-boton {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.portada-2 button {
+    font-size: 20px;
+    width: 200px;
+    height: 50px;
+    font-weight: 900;
+    padding: 10px 20px;
+    background-color: #ffc400;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.portada-2 button:hover {
+    background-color: #ffa500;
+}
+
+@media screen and (max-width: 768px) {
+    /* Estilos para dispositivos móviles */
+    .portada-2 {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+    }
+
+    .publicidad,
+    .publicidad-2,
+    .imagen-publicidad,
+    .publicidad-boton {
+        max-width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .publicidad p {
+        font-size: 28px;
+    }
+
+    .publicidad-2 p {
+        font-size: 20px;
+    }
+
+    .portada-2 button {
+        font-size: 16px;
+        width: 150px;
+        height: 40px;
+        padding: 10px 15px;
+    }
+}
+
+
+.servicios {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.servicio {
+  position: relative;
+  flex: 1;
+  margin: 0 10px;
+  overflow: hidden;
+  border: 2px solid #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.servicio img {
+  display: block;
+  width: 100%;
+  height: 50em;
+  transition: transform 0.3s ease;
+}
+
+.servicio:hover img {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.servicio:hover .overlay {
+  opacity: 1;
+}
+
+.overlay h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.overlay p {
+  font-size: 46px;
+  font-style: italic;
+  max-width: 80%;
+}
+
+@media (max-width: 768px) {
+  .servicios {
+      flex-direction: column;
+  }
+
+  .servicio {
+      margin: 10px 0;
+  }
+}
+
+.contacto {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 800px; /* Altura fija para pantallas grandes */
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.imagen-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Ajusta la altura al 100% para cubrir completamente el contenedor */
+  z-index: -1; /* Asegura que la imagen de fondo esté detrás del formulario */
+}
+
+.imagen-2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta la imagen para cubrir todo el contenedor */
+  opacity: 1; /* Ajusta la opacidad según prefieras */
+}
+
+.contact-form {
+  position: relative;
+  z-index: 1; /* Asegura que el formulario esté encima de la imagen de fondo */
+  max-width: 800px;
+  width: 90%; /* Ancho máximo para pantallas grandes */
+  margin: 0 auto; /* Centra el formulario horizontalmente */
+  background-color: rgba(255, 255, 255, 0.753); /* Fondo semi-transparente */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.contact-form h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left; /* Alinea el texto a la izquierda dentro del formulario */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%; /* Ajusta el ancho al 100% para que sea responsive */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.btn-contact {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-contact:hover {
+  background-color: #0056b3;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+  .contacto {
+    height: auto; /* Altura automática para dispositivos móviles */
+  }
+
+  .imagen-2 {
+    height: 400px; /* Ajusta la altura de la imagen para dispositivos móviles */
+  }
+
+  .contact-form {
+    padding: 10px; /* Ajusta el padding para dispositivos móviles */
+  }
+}
+
+/* Estilo general del footer */
+footer {
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+/* Estilo general del footer */
+footer {position: relative; /* Asegura que el footer se comporte según su contexto */
+  z-index: 0; /* Asegura que el footer esté detrás del formulario y la imagen */
+}
+
+/* Contenedor principal del footer */
+.footer-container {
+    background-color: rgb(0, 13, 134);
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Alinea verticalmente los elementos dentro del contenedor */
+}
+
+/* Estilo para cada sección del footer */
+.footer-section {
+    text-align: left; /* Alineación del contenido dentro de cada sección */
+    padding: 0 10px; /* Espaciado interno para separar los elementos */
+}
+
+/* Estilo para el logo */
+.logo-section img {
+    width: 300px;
+    height: 200px; /* Ajusta el tamaño máximo del logo */
+}
+
+/* Estilo para los enlaces de redes sociales */
+.social-section a {
+    display: block; /* Muestra los enlaces como bloques separados */
+    margin-bottom: 10px; /* Espacio entre los enlaces */
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.social-section a:hover {
+    color: #007bff; /* Cambia el color al pasar el ratón por encima */
+}
+
+/* Estilo para la declaración de copyright */
+.copyright-section {
+    background-color: #000;
+    color: #fff;
+    padding: 1px;
+    text-align: center;
+}

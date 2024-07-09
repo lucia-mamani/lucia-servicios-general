@@ -1,0 +1,107 @@
+.nuestros-beneficios{
+    justify-items: center;
+    margin: 30px;
+    display: flex;
+}
+
+.beneficio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    text-align: center;
+}
+.nuestros-beneficios img{
+    align-items: center;
+    width: 150px;
+    height: 150px;
+}
+.texto{
+    width: 100%;
+    height: 200PX;
+}
+.nuestros-beneficios h1{
+    padding-top: 40px;
+}
+.nuestros-beneficios p{
+    text-align: center;
+}
+.imagen-portada-2{
+    width: 1349px;
+    height: 400px;
+}
+
+.lema-container {
+    margin-top: 20px;
+}.nuestras-servicios {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50vh; /* Ajusta la altura según tu preferencia */
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+.cuadro {
+    text-align: center;
+    width: 200px; /* Ancho de cada cuadro */
+    height: 200px; /* Altura fija para mantener la uniformidad */
+    padding: 20px;
+    background-color: #1e1b1f; /* Color de fondo oscuro */
+    color: #fff; /* Texto en color blanco */
+    border: 2px solid #f0f0f0; /* Borde blanco */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    overflow: hidden; /* Oculta el párrafo al principio */
+    position: relative; /* Para usar posición absoluta en el párrafo */
+}
+.cuadro h3 {
+    font-size: 2em; /* Tamaño grande de fuente */
+    margin-top: 0;
+    transition: opacity 0.3s; /* Transición suave para la opacidad */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el título */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    opacity: 1; /* Inicia visible */
+}
+.cuadro p {
+    font-size: 1.2em; /* Tamaño de fuente más pequeño para descripciones */
+    margin-bottom: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    opacity: 0; /* Inicia invisible */
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semi-transparente */
+    padding: 20px;
+    transition: opacity 0.3s; /* Transición suave para mostrar/ocultar */
+}
+.cuadro:hover h3 {
+    opacity: 0; /* Oculta el título al pasar el cursor */
+}
+.cuadro:hover p {
+    opacity: 1; /* Muestra el párrafo al pasar el cursor */
+}
+
+.lema p {
+    margin: 0;
+    font-size: 1.2em;
+    font-style: italic;
+}
+.lema-container {
+    background-color: #007BFF;
+    display: flex;
+    height: 25vh; /* Esto hace que el contenedor ocupe toda la altura de la ventana */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.lema p{
+    color: white;
+    font-size: 50px;
+    /* Puedes añadir estilos adicionales aquí si es necesario */
+}
