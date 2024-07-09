@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagenes Responsivas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    
+    .carousel {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        margin: auto;
+        overflow: hidden;
+    }
+    
+    .carousel-track-container {
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .carousel-track {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        will-change: transform;
+    }
+    
+    .carousel-item {
+        min-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .carousel-item img {
+        width: 100%;
+        display: block;
+    }
+    
+    @media (min-width: 768px) {
+        .carousel-item {
+            min-width: 50%;
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        .carousel-item {
+            min-width: 33.33%;
+        }
+    }
+    
+    @media (min-width: 1200px) {
+        .carousel-item {
+            min-width: 25%;
+        }
+    }
+    
+    @media (min-width: 1400px) {
+        .carousel-item {
+            min-width: 20%;
+        }
+    }
+    
+</style>
+<body>
+    <div class="carousel">
+        <div class="carousel-track-container">
+            <div class="carousel-track">
+                <div class="carousel-item"><img src="image1.jpg" alt="Imagen 1"></div>
+                <div class="carousel-item"><img src="image2.jpg" alt="Imagen 2"></div>
+                <div class="carousel-item"><img src="image3.jpg" alt="Imagen 3"></div>
+                <div class="carousel-item"><img src="image4.jpg" alt="Imagen 4"></div>
+                <div class="carousel-item"><img src="image5.jpg" alt="Imagen 5"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const slides = Array.from(track.children);
+        let currentIndex = 0;
+        let startPos = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let animationID;
+        let isDragging = false;
+
+        track.addEventListener('touchstart', touchStart);
+        track.addEventListener('touchend', touchEnd);
+        track.addEventListener('touchmove', touchMove);
+
+        function touchStart(event) {
+            startPos = getPositionX(event);
+            isDragging = true;
+            animationID = requestAnimationFrame(animation);
+            track.style.cursor = 'grabbing';
+        }
+
+        function touchEnd() {
+            isDragging = false;
+            cancelAnimationFrame(animationID);
+
+            const movedBy = currentTranslate - prevTranslate;
+
+            if (movedBy < -100 && currentIndex < slides.length - 1) {
+                currentIndex += 1;
+            } else if (movedBy < -100 && currentIndex === slides.length - 1) {
+                currentIndex = 0; // Vuelve al primer slide si está en el último
+            }
+
+            if (movedBy > 100 && currentIndex > 0) {
+                currentIndex -= 1;
+            }
+
+            setPositionByIndex();
+
+            track.style.cursor = 'grab';
+        }
+
+        function touchMove(event) {
+            if (isDragging) {
+                const currentPosition = getPositionX(event);
+                currentTranslate = prevTranslate + currentPosition - startPos;
+            }
+        }
+
+        function getPositionX(event) {
+            return event.touches[0].clientX;
+        }
+
+        function animation() {
+            setSliderPosition();
+            if (isDragging) requestAnimationFrame(animation);
+        }
+
+        function setSliderPosition() {
+            track.style.transform = `translateX(${currentTranslate}px)`;
+        }
+
+        function setPositionByIndex() {
+            currentTranslate = currentIndex * -slides[0].clientWidth;
+            prevTranslate = currentTranslate;
+            setSliderPosition();
+        }
+
+        window.addEventListener('resize', showSlides);
+        showSlides();
+
+        function showSlides() {
+            const viewportWidth = window.innerWidth;
+            const totalWidth = track.scrollWidth;
+            const itemWidth = slides[0].getBoundingClientRect().width;
+            const visibleSlides = Math.floor(viewportWidth / itemWidth);
+
+            if (visibleSlides < slides.length) {
+                currentIndex = 0;
+                updateCarousel();
+            }
+        }
+
+        function updateCarousel() {
+            const itemWidth = slides[0].getBoundingClientRect().width;
+            track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        }
+    </script>
+</body>
+</html>

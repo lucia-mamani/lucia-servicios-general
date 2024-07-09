@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Mi Empresa</title>
+    <link rel="stylesheet" href="css/styles.css"> 
+    <link rel="stylesheet" href="css/style7.css">
+</head>
+<body>
+    <header>
+        <img src="images/logo-nuevo.png" alt="Logo de la Empresa" class="logo">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="sobre_nosotros.html">Sobre Nosotros</a></li>
+                <li class="submenu">
+                    <a href="#">Servicios</a>
+                    <ul>
+                        <li><a href="sastreria.html">Sastrería</a></li>
+                        <li><a href="soldadura.html">Soldadura</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="#">Productos</a>
+                    <ul>
+                        <li><a href="ferreteria.html">Ferretería</a></li>
+                        <li><a href="tienda_de_ropa.html">Tienda de Ropa</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="red_social">
+            <img src="images/iconos-header.png" alt="redes" class="redes_sociales">
+            <img src="images/iconos-header2.png" alt="redes" class="redes_sociales">
+            <img src="images/iconos-header3.png" alt="redes" class="redes_sociales">
+        </div>
+    </header>
+<style>
+    .image-container {
+        position: relative;
+        text-align: center;
+        color: white;
+    }
+    .imagen_de_fondo {
+        width: 100%;
+        height:200px ;
+    }
+    .texto-superpuesto {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 5em; /* Tamaño de letra grande */
+        font-weight: bold;
+    }
+    .contacto{
+        width: 1349px;
+        height: 500px;
+        display: flex;
+    }
+
+    .imagen-contactos img{
+        width: 500px;
+        height: 300px;
+       margin: -10px;
+    }
+    .contenedor {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+    }
+    .lema{
+        text-align: center;
+        width: 500px;
+        height: 100px;
+    }
+
+    .frase{
+        text-align: center;
+    }
+     h3 {
+        font-style: italic;
+        color: black;
+    }
+</style>
+<main>
+    <div class="image-container">
+        <img src="images/fondo _de_contactos.jpg" alt="Imagen de fondo" class="imagen_de_fondo">
+        <h2 class="texto-superpuesto">Contacto</h2>
+    </div>
+    <div class="contacto">
+        <div class="contenedor">
+            <div class="frase">
+                <h2>contactos</h2>
+            </div>
+            <div class="imagen-contactos">
+                <img src="images/pexels-pixabay-73833.jpg" alt="Imagen de Publicidad">
+            </div>
+            <div class="lema">
+                <h3>"¿Tienes alguna pregunta o necesitas más información? ¡Contáctanos hoy mismo y descubre cómo podemos ayudarte!"
+                </h3>
+            </div>
+        </div>
+        <form action="submit.php" method="POST" class="contact-form">
+            <h2>Contáctanos</h2>
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" placeholder="Tu nombre completo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Escribe tu mensaje aquí" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-contact">Enviar Mensaje</button>
+        </form>
+    </div>
+
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section logo-section">
+                <!-- Parte 1: Logo -->
+                <img src="ruta-al-logo.png" alt="Logo">
+            </div>
+            <div class="footer-section contact-section">
+                <!-- Parte 2: Información de contacto -->
+                <p>Número de teléfono: +51 967 845 936</p>
+                <p>Correo electrónico: mamaniaquiselucia.com</p>
+                <p>Ubicación: Dirección</p>
+            </div>
+            <div class="footer-section social-section">
+                <!-- Parte 3: Redes sociales -->
+                <a href="enlace-facebook" target="_blank"><i class="fab fa-facebook"></i> Facebook</a><br>
+                <a href="enlace-blogger" target="_blank"><i class="fab fa-blogger"></i> Blogger</a><br>
+                <a href="enlace-otro-google" target="_blank"><i class="fab fa-google"></i> Otro sitio Google</a><br>
+            </div>
+        </div>
+        <div class="copyright-section">
+            <!-- Parte 4: Licencia de Copyright -->
+            <p>&copy; 2024 Nombre de tu empresa. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>
