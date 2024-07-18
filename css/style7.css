@@ -44,40 +44,88 @@
     font-size: 1em; /* Tamaño del párrafo */
 }
 
-
-
 .circle-container {
-    display: flex;   
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start; /* Alineación al inicio */
+    flex-wrap: wrap; /* Envuelve los elementos cuando no caben en una sola línea */
+    background-color: #f2f2f2; /* Color de fondo para el contenedor */
+    padding: 20px; /* Espaciado interno */
 }
+
 .element {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-}
-.element1, .element2, .element3, .element4 {
-    text-align: center;
-    margin: 10px;
+    align-items: center; /* Centra los elementos horizontalmente */
+    margin-bottom: 20px; /* Espacio entre las columnas */
+    text-align: center; /* Centra el texto horizontalmente */
+    width: calc(50% - 20px); /* Dos columnas en dispositivos móviles */
+    margin-right: 20px; /* Espacio entre las columnas */
 }
 
-.element img {
-    width: 100px;
-    height: 100px;
+.element:nth-child(2n) {
+    margin-right: 0; /* Elimina el margen derecho para la última columna en cada fila */
 }
-.circle-container img {
-    display: block;
-    margin: 0 auto;
+.elemento_principal {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    margin: 20px 0; /* Espacio alrededor del elemento principal */
+    max-width: 50%; /* Ancho máximo del elemento principal */
 }
 .elemento_principal img{
-    width: 200px;
-    height: 200px; 
+    border-radius: 60%;
+    background: #00BFFF;
+    width: 400px;
+    height: 400px;
 }
-.elemento_principal{
-    background: rgb(0, 204, 255);
-    border-radius: 50%;
+
+
+
+.element img {
+    max-width: 40%; /* Imágenes ajustadas al ancho del contenedor */
+    height: auto; /* Altura automática según el ancho */
+    border-radius: 8px; /* Bordes redondeados para las imágenes */
 }
+
+.texto-2 {
+    text-align: center;
+    padding: 10px; /* Espaciado interno para el texto */
+    background-color: white; /* Fondo blanco para el texto */
+    border-radius: 8px; /* Bordes redondeados para el texto */
+    margin-top: 10px; /* Margen superior */
+}
+
+@media (max-width: 768px) {
+    .element {
+        width: 100%; /* Una columna completa en dispositivos móviles */
+        margin-right: 0; /* Sin margen derecho en dispositivos móviles */
+        margin-bottom: 20px; /* Espacio entre elementos */
+    }
+
+    .element img{
+        width: 40%;
+        height: auto;
+
+    } 
+    .elemento_principal {
+        display: none; /* Oculta el elemento principal en dispositivos móviles */
+        order: 3; /* Cambia el orden para que aparezca después de las otras columnas */
+    }
+
+    
+
+    .element:nth-child(2n) {
+        margin-right: 0; /* Asegura que la última columna en cada fila no tenga margen derecho */
+    }
+    .texto-2 {
+        font-size: 12px; /* Reducción adicional del tamaño de fuente para dispositivos móviles */
+    }
+}
+
+
 
 
 .lema {

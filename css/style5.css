@@ -1,50 +1,152 @@
-.nuestros-beneficios{
-    justify-items: center;
-    margin: 30px;
+/* Estilos para el contenedor de beneficios */
+.introduccion-de-soldadura {
     display: flex;
-}
-
-.beneficio{
-    display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
     margin: 20px;
-    text-align: center;
-}
-.nuestros-beneficios img{
-    align-items: center;
-    width: 150px;
-    height: 150px;
-}
-.texto{
-    width: 100%;
-    height: 200PX;
-}
-.nuestros-beneficios h1{
-    padding-top: 40px;
-}
-.nuestros-beneficios p{
-    text-align: center;
-}
-.imagen-portada-2{
-    width: 1349px;
-    height: 400px;
+    padding: 40px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
-.lema-container {
-    margin-top: 20px;
-}.nuestras-servicios {
+.imagen-de-soldadura, .texto-soldadura {
+    flex: 1 1 45%;
+    margin: 10px;
+}
+
+.imagen-de-soldadura img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.imagen-de-soldadura img:hover {
+    transform: scale(1.05);
+}
+
+.texto-soldadura {
+    text-align: left;
+}
+
+.texto-soldadura h1 {
+    font-size: 2em;
+    color: #4682B4;
+    margin-bottom: 10px;
+}
+
+.texto-soldadura p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .introduccion-de-soldadura {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .imagen-de-soldadura, .texto-soldadura {
+        flex: none;
+        width: 100%;
+    }
+
+    .imagen-de-soldadura img {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+.nuestros-beneficios {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Permite que los beneficios se envuelvan en varias líneas */
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos para cada beneficio */
+.beneficios {
+    width: 23%; /* Ajusta el ancho para cuatro columnas con espacio entre ellos */
+    margin-bottom: 50px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.beneficios:hover .imagen-de-beneficios img {
+    transform: scale(1.1); /* Agranda la imagen al pasar el cursor */
+}
+
+/* Estilos para la imagen dentro de cada beneficio */
+.beneficios .imagen-de-beneficios {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.beneficios .imagen-de-beneficios img {
+    transition: transform 0.3s ease;
+    max-width: 80%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Estilos para el texto dentro de cada beneficio */
+.beneficios .texto {
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro para el texto */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para el texto */
+}
+
+.beneficios .texto h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.beneficios .texto p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #ffffff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .beneficios {
+        width: 48%; /* Ajusta el ancho para dos columnas */
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .beneficios {
+        width: 100%; /* Ajusta el ancho para una columna en pantallas pequeñas */
+        margin-bottom: 20px;
+    }
+}
+
+.nuestras-servicios {
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    height: 50vh; /* Ajusta la altura según tu preferencia */
-    padding: 0 20px;
-    box-sizing: border-box;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px; /* Espacio entre los cuadros */
+    flex-wrap: wrap; /* Permite que los cuadros se envuelvan en varias líneas si es necesario */
 }
+
 .cuadro {
-    text-align: center;
-    width: 200px; /* Ancho de cada cuadro */
-    height: 200px; /* Altura fija para mantener la uniformidad */
+    width: calc(25% - 20px); /* Ajusta el ancho de cada cuadro */
+    height: 500px;
     padding: 20px;
     background-color: #1e1b1f; /* Color de fondo oscuro */
     color: #fff; /* Texto en color blanco */
@@ -53,55 +155,96 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
     overflow: hidden; /* Oculta el párrafo al principio */
     position: relative; /* Para usar posición absoluta en el párrafo */
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
 }
+
+.cuadro .imagen {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.imagen img {
+    max-width: 100%;
+    height: 400px;
+    border-radius: 10px;
+}
+
 .cuadro h3 {
-    font-size: 2em; /* Tamaño grande de fuente */
+    text-align: center;
+    font-size: 1.5em; /* Tamaño grande de fuente */
     margin-top: 0;
-    transition: opacity 0.3s; /* Transición suave para la opacidad */
     cursor: pointer; /* Cambia el cursor al pasar sobre el título */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    opacity: 1; /* Inicia visible */
 }
+
 .cuadro p {
-    font-size: 1.2em; /* Tamaño de fuente más pequeño para descripciones */
-    margin-bottom: 0;
+    font-size: 1em;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    opacity: 0; /* Inicia invisible */
+    transform: translate(-50%, -57%);
+    width: 88%;
+    height: 400px; /* Ajusta el máximo de altura */
+    opacity: 0;
     background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semi-transparente */
-    padding: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px; /* Borde redondeado */
     transition: opacity 0.3s; /* Transición suave para mostrar/ocultar */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: auto; /* Añade desbordamiento automático si el contenido es demasiado largo */
 }
-.cuadro:hover h3 {
-    opacity: 0; /* Oculta el título al pasar el cursor */
-}
+
 .cuadro:hover p {
     opacity: 1; /* Muestra el párrafo al pasar el cursor */
 }
 
-.lema p {
-    margin: 0;
-    font-size: 1.2em;
-    font-style: italic;
+@media (max-width: 1024px) {
+    .cuadro {
+        width: calc(50% - 20px); /* Ajusta el ancho de cada cuadro a dos columnas */
+    }
 }
-.lema-container {
-    background-color: #007BFF;
-    display: flex;
-    height: 25vh; /* Esto hace que el contenedor ocupe toda la altura de la ventana */
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+@media (max-width: 768px) {
+    .cuadro {
+        width: calc(50% - 10px); /* Ajusta el ancho de cada cuadro a dos columnas */
+        height: 20em; /* Altura automática para adaptarse al contenido */
+        margin-bottom: 10px; /* Espacio entre los cuadros */
+    }
+
+    .cuadro .imagen img {
+        height: 12em; /* Ajusta la altura de la imagen automáticamente */
+        max-width: 100%; /* Ajusta el ancho máximo de la imagen */
+        border-radius: 10px;
+    }
+
+    .cuadro h3 {
+        text-align: center;
+        font-size: 1.1em; /* Reducir el tamaño de la fuente del título */
+        margin-top: 10px; /* Espacio superior para el título */
+    }
+
+    .cuadro p {
+        font-size: 0.9em; /* Reducir el tamaño de la fuente del párrafo */
+        padding: 5px 10px; /* Ajustar el relleno del párrafo */
+        text-align: center; /* Alinear el texto justificado */
+    }
 }
 
-.lema p{
-    color: white;
-    font-size: 50px;
-    /* Puedes añadir estilos adicionales aquí si es necesario */
+
+
+
+
+.imagen-portada-2{  
+    width: 100%;
+    max-width: 1349px;
+    max-height: 400px;
+    padding: 25px;
+    border-radius: 50px;
+}
+
+.lema-container {
+    margin-top: 20px;
 }

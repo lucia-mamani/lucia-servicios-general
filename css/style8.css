@@ -1,0 +1,19 @@
+.introducion-de-sastreria{
+    display: flex;
+  align-items: center;
+  padding: 70px;
+  background-color: #f9f9f9;
+}
+.imagen-de-sastreria{
+    flex: 1;
+    text-align: center;
+    max-width: 100%;
+    padding: 0 20px;
+}
+.imagen-de-sastreria img{
+    width: 100%;
+  max-width: 600px; /* Ancho máximo inicial de la imagen */
+  height: auto;
+  border-radius: 8px;
+ 
+}
