@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Imagen</title>
+</head>
+<body>
+    <h1>Subir Imagen</h1>
+    <form id="uploadForm" action="upload.php" method="post" enctype="multipart/form-data">
+        <input type="text" name="nombre" placeholder="Nombre de la imagen"><br><br>
+        <input type="file" name="imagen"><br><br>
+        <button type="submit">Subir Imagen</button>
+    </form>
+
+    <div id="mensaje"></div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var formData = new FormData(this);
+
+            fetch(this.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('mensaje').innerText = data.message || data.error || 'Error al subir la imagen';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('mensaje').innerText = 'Error en la solicitud';
+            });
+        });
+    </script>
+</body>
+</html>
